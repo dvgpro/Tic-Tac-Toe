@@ -10,6 +10,12 @@ class Game
     end
   end
 
+  def game_won; end
+
+  def board_full; end
+
+  def switch_user; end
+
   def display_board
     row_separators = '-- + -- + --'
     @board.map { |row| create_rows(row).concat("\n #{row_separators} \n") }
