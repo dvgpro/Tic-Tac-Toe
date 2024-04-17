@@ -5,6 +5,11 @@ class Game
     @board = Array.new(3) { Array.new(3) }
   end
 
+  def play_game
+    loop do
+    end
+  end
+
   def display_board
     row_separators = '-- + -- + --'
     @board.map { |row| create_rows(row).concat("\n #{row_separators} \n") }
