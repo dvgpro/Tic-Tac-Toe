@@ -8,8 +8,8 @@ class Game
 
     # Stores the current user's index number
     @current_player_idx = 0
-    @players = [player1_class, player2_class]
-    puts "#{@players[@current_player_idx]} goes first!"
+    @players = [player1_class.new(self, 'X'), player2_class.new(self, 'O')]
+    puts "#{current_user} goes first!"
   end
 
   def play_game
@@ -29,8 +29,12 @@ class Game
     end
   end
 
+  def current_user
+    @players[current_player_idx]
+  end
+
   def switch_user
-    @current_player_idx = 1 - @current_player_idx
+    1 - @current_player_idx
   end
 
   def display_board
@@ -47,14 +51,18 @@ end
 class Player
   attr_reader :marker
 
-  def initialize
-    @marker = %w[X O]
+  def initialize(game, marker)
+    @game = game
+    @marker = marker
   end
 end
 
 # Creates user that asks for user input after each round
 class User < Player
-  def initialize; end
+  def marker_position
+    loop do
+    end
+  end
 end
 
 Game.new(User, 'Computer')
