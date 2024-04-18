@@ -47,6 +47,16 @@ end
 
 # Sets current player to user object that gets position on the game board from the user
 class User < Player
+  def select_token_position
+    loop do
+      puts 'Enter number from 1 to 9 to place token'
+      location = gets.to_i
+
+      return location if @game.check_spot.include?(location)
+
+      puts 'Enter available location!'
+    end
+  end
 end
 
 # Sets current player to computer objects that gets a randomly chossen position
