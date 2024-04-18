@@ -30,7 +30,8 @@ class Game
 
   # Checks if specific spot is empty before player places token
   def check_spot
-    (1..9).any? {|position| @board[position].empty?}
+    (1..9).any? { |position| @board[position].empty? }
+  end
 
   # Displays board
   def display_board; end
@@ -62,6 +63,12 @@ end
 
 # Sets current player to computer objects that gets a randomly chossen position
 class Computer < Player
+  def select_token_position
+    loop do
+      location = Random.new.rand(1..9)
+      return location if @game.check_spot.include?(location)
+    end
+  end
 end
 
 Game.new('User', 'Computer')
