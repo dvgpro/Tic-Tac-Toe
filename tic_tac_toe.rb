@@ -7,7 +7,7 @@ class Game
 
     # Stores the current user's index number
     @current_player_idx = 0
-    @players = Array.new(player1_class, player2_class)
+    @players = [player1_class, player2_class]
     puts "#{@players[@current_player_idx]} goes first!"
   end
 
@@ -20,7 +20,13 @@ class Game
 
   def game_won; end
 
-  def board_full; end
+  def board_full
+    @board.any? do |row|
+      row.any? do |e|
+        e.respond_to?(:empty?) && e.empty?
+      end
+    end
+  end
 
   def switch_user
     @current_player_idx = 1 - @current_player_idx
@@ -36,5 +42,4 @@ class Game
   end
 end
 
-game1 = Game.new
-puts game1.display_board
+game1 = Game.new('User', 'Computer')
