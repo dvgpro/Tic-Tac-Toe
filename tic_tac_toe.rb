@@ -12,7 +12,9 @@ class Game
   end
 
   def play_game
+    # Loops upto the size of the array plus 1
     0.upto(10) do
+      switch_user
     end
   end
 
@@ -20,7 +22,9 @@ class Game
 
   def board_full; end
 
-  def switch_user; end
+  def switch_user
+    @current_player_idx = 1 - @current_player_idx
+  end
 
   def display_board
     row_separators = '-- + -- + --'
