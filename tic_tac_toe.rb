@@ -1,3 +1,4 @@
+# Game of Tic Tac Toe
 class Game
   attr_accessor :board, :current_player_idx
   attr_reader :players
@@ -42,4 +43,18 @@ class Game
   end
 end
 
-game1 = Game.new('User', 'Computer')
+# Super class for the player classes
+class Player
+  attr_reader :marker
+
+  def initialize
+    @marker = %w[X O]
+  end
+end
+
+# Creates user that asks for user input after each round
+class User < Player
+  def initialize; end
+end
+
+Game.new(User, 'Computer')
