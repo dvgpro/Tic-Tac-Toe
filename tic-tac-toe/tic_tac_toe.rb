@@ -1,6 +1,7 @@
 # Creates single game of tic-tac-toe
 class Game
-    attr_reader :board :current_user_index :players
+  attr_reader :board, :current_user_index, :players
+
   def initialize(player1_class, player2_class)
     # Board array with 9 empty spaces
     @board = Array.new(9)
@@ -32,6 +33,24 @@ class Game
 
   # Displays board
   def display_board; end
+end
+
+# Super class that gives the user and computer objects initial variables
+class Player
+  attr_reader :token
+
+  def initialize(game, token)
+    @token = token
+    @game = game
+  end
+end
+
+# Sets current player to user object that gets position on the game board from the user
+class User < Player
+end
+
+# Sets current player to computer objects that gets a randomly chossen position
+class Computer < Player
 end
 
 Game.new('User', 'Computer')
