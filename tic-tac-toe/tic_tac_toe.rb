@@ -10,7 +10,7 @@ class Game
     @current_user_index = 0
     # Stores player objects
     @players = [player1_class.new(self, 'X'), player2_class.new(self, 'O')]
-    puts "#{players[current_user_index]} goes first!"
+    puts "#{current_user} goes first!"
   end
 
   # Loops until game is won or board is full
@@ -23,10 +23,14 @@ class Game
   def board_full; end
 
   # Deines the current user at the start of each round
-  def current_user; end
+  def current_user
+    @players[@current_user_index]
+  end
 
   # Switches the user after each round
-  def switch_users; end
+  def switch_users
+    1 - @current_user_index
+  end
 
   # Checks if specific spot is empty before player places token
   def check_spot
