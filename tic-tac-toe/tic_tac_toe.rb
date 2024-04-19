@@ -1,10 +1,39 @@
+# Matches number with 2d array position
+module Positioning
+  def array_position(num)
+    case num
+    when 1
+      [0, 0]
+    when 2
+      [0, 1]
+    when 3
+      [0, 2]
+    when 4
+      [1, 0]
+    when 5
+      [1, 1]
+    when 6
+      [1, 2]
+    when 7
+      [2, 0]
+    when 8
+      [2, 1]
+    when 9
+      [2, 2]
+    else
+      Puts 'Not a position'
+    end
+  end
+end
+
 # Creates single game of tic-tac-toe
 class Game
+  include Positioning
   attr_reader :board, :current_user_index, :players
 
   def initialize(player1_class, player2_class)
     # Board array with 9 empty spaces
-    @board = Array.new(9)
+    @board = Array.new(3) { Array.new(3) }
 
     # Stores the index for the current user
     @current_player_index = 0
@@ -23,18 +52,18 @@ class Game
   def board_full; end
 
   # Deines the current user at the start of each round
-  def current_user
+  def current_player
     @players[@current_player_index]
   end
 
   # Switches the user after each round
-  def switch_users
+  def switch_player
     1 - @current_player_index
   end
 
   # Checks if specific spot is empty before player places token
   def check_spot
-    (1..9).any? { |position| @board[position].empty? }
+    (1..9).any? { |position| @board[array_position(position)].empty? }
   end
 
   # Displays board
