@@ -30,11 +30,7 @@ class TicTacToe
   end
 
   def win_game
-    if row_lines || column_lines || diagonal_lines
-      true
-    else
-      false
-    end
+    row_lines || column_lines || diagonal_lines ? true : false
   end
 
   def row_lines
@@ -119,7 +115,7 @@ class User < Player
   def token_location
     loop do
       puts 'Enter a number between 1 and 9'
-      @location = gets.to_i
+      location = gets.to_i
       # Stops the loop if the location is not already taken
       return location if @game.check_location(location)
 
