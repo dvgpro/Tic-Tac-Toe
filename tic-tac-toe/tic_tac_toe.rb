@@ -43,24 +43,38 @@ class Game
   end
 
   # Loops until game is won or board is full
-  def play_game; end
+  def play_game
+    0.upto(9) do
+      place_token(current_player)
+
+      if game_won
+        puts "#{current_player} wins!"
+      elsif board_full
+        puts "It's a draw"
+      end
+
+      switch_player
+    end
+  end
 
   # Assign a token to array location
   def place_token(player)
     position = player.select_token_position
     @board[array_position(position)].fill(player.token)
-    puts @board
+    display_board
   end
 
   # Checks if any lines are filled with the same token
   def game_won; end
 
   # Checks if there are any empty spaces left
-  def board_full; end
+  def board_full
+    check_spot.empty?
+  end
 
   # Deines the current user at the start of each round
   def current_player
-    @players[@current_player_index].to_s
+    @players[@current_player_index]
   end
 
   # Switches the user after each round
