@@ -61,7 +61,7 @@ class Game
   def place_token(player)
     position = player.select_token_position
     @board[array_position(position)].fill(player.token)
-    display_board
+    puts display_board
   end
 
   # Checks if any lines are filled with the same token
@@ -88,7 +88,14 @@ class Game
   end
 
   # Displays board
-  def display_board; end
+  def display_board
+    row_separators = '-- + -- + --'
+    @board.map { |row| create_rows(row).concat("\n #{row_separators} \n") }
+  end
+
+  def create_rows(row)
+    "  #{row[0]}  |  #{row[1]}  |  #{row[2]}  "
+  end
 end
 
 # Super class that gives the user and computer objects initial variables
@@ -125,4 +132,5 @@ class Computer < Player
   end
 end
 
-Game.new(User, Computer)
+game1 = Game.new(User, Computer)
+puts game1.display_board
