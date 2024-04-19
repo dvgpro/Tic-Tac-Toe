@@ -39,11 +39,18 @@ class Game
     @current_player_index = 0
     # Stores player objects
     @players = [player1_class.new(self, 'X'), player2_class.new(self, 'O')]
-    puts "#{current_user} goes first!"
+    puts "#{current_player} goes first!"
   end
 
   # Loops until game is won or board is full
   def play_game; end
+
+  # Assign a token to array location
+  def place_token(player)
+    position = player.select_token_position
+    @board[array_position(position)].fill(player.token)
+    puts @board
+  end
 
   # Checks if any lines are filled with the same token
   def game_won; end
@@ -53,7 +60,7 @@ class Game
 
   # Deines the current user at the start of each round
   def current_player
-    @players[@current_player_index]
+    @players[@current_player_index].to_s
   end
 
   # Switches the user after each round
@@ -104,4 +111,4 @@ class Computer < Player
   end
 end
 
-Game.new('User', 'Computer')
+Game.new(User, Computer)
