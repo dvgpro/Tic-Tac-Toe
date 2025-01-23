@@ -2,17 +2,16 @@
 class TicTacToe
   attr_reader :board, :players, :player_id
 
-  def initialize(player1_class, player2_class)
+  def initialize
     # Creates a 2D grid with 3 arrays of 3 empty values
     @board = Array.new(3) { Array.new(3) }
-
-    # Gets the two player objects, allows for two humans, two computer's or one human, one computer to play against each other
-    @players = [player1_class.new(self, 'X'), player2_class.new(self, 'O')]
     @player_id = 0
-    puts "#{current_player.token} goes first!"
+    
   end
 
-  def play_game
+  def play_game(player_one, player_two)
+    @players = [player_one, player_two]
+    
     # For safety reasons, only loops to the amount of spaces on the board
     0.upto(8) do
       place_marker(current_player)
@@ -99,41 +98,7 @@ class TicTacToe
   end
 end
 
-# Super that initializes child classes
-class Player
-  attr_reader :game, :token
 
-  def initialize(game, token)
-    @game = game
-    @token = token
-  end
-end
 
-# Represents Human player, allows for two human players to play at once
-class User < Player
-  # Gets and returns user's input
-  def token_location
-    loop do
-      puts 'Enter a number between 1 and 9'
-      location = gets.to_i
-      # Stops the loop if the location is not already taken
-      return location if @game.check_location(location)
 
-      puts 'Location not available!'
-    end
-  end
-end
 
-# Allows basic "AI" to play the game if user has no friends
-class Computer < Player
-  # Randomly generate a location when computer class is called
-  def token_location
-    loop do
-      location = Random.new.rand(1..9)
-      return location if @game.check_location(location)
-    end
-  end
-end
-
-# Can put any combination of User and Computer
-TicTacToe.new(User, Computer).play_game
