@@ -7,7 +7,7 @@ class Game
     player_one = Human.new(@game, 'X')
     player_two = choose_opponent_control
 
-    @game.play_game
+    @game.play_game(player_one, player_two)
   end
 
   def get_opponent_control
