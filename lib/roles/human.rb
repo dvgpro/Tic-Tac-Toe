@@ -1,3 +1,5 @@
+require_relative 'player'
+
 class Human < Player
   # Gets and returns user's input
   def token_location
