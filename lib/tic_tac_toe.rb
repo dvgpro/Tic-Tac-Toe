@@ -7,6 +7,7 @@ class TicTacToe
     @board = Array.new(3) { Array.new(3) }
     @player_id = 0
     
+    puts "X goes first!"
   end
 
   def play_game(player_one, player_two)
@@ -78,7 +79,7 @@ class TicTacToe
     row = idx / 3 # If idx is7, gets 2
     col = idx % 3 # If idx is 7 , gets 1
 
-    @board[row][col] = player.token
+    @board[row][col] = player.token.to_sym
     puts display_board
   end
 
