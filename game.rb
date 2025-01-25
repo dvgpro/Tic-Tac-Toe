@@ -1,3 +1,7 @@
+require_relative 'lib/tic_tac_toe'
+require_relative 'lib/player_roles/human'
+require_relative 'lib/player_roles/computer'
+
 class Game
   attr_reader :game
 
