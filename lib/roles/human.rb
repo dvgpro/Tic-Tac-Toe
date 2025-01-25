@@ -6,7 +6,7 @@ class Human < Player
     puts "Enter number between 1 and 9"
 
     begin
-      location = gets.chomps.to_i
+      location = gets.chomp.to_i
     rescue 
       return token_location
     end

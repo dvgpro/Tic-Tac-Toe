@@ -17,7 +17,7 @@ class Game
 
   def get_opponent_control
     puts "Please enter Human or Computer"
-    opponent_class = gets.chomps.capitalize()
+    opponent_class = gets.chomp.capitalize()
 
     if opponent_class == "Human"
       return Human.new(@game, "O")
