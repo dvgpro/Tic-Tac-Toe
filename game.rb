@@ -10,7 +10,7 @@ class Game
     @game = TicTacToe.new
 
     player_one = Human.new(@game, 'X')
-    player_two = choose_opponent_control
+    player_two = get_opponent_control
 
     @game.play_game(player_one, player_two)
   end
