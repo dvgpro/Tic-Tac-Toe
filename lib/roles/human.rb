@@ -13,7 +13,7 @@ class Human < Player
 
     if !(1..9).include?(location)
       return token_location
-    elsif !@game.check_location
+    elsif !@game.check_location(location)
       return token_location
     end
 
