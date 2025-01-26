@@ -1,3 +1,5 @@
+require_relative 'player'
+
 class Computer < Player
   # Randomly generate a location when computer class is called
   def token_location
